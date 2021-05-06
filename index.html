@@ -80,7 +80,13 @@
               " Ties: " +
               tieCount
           );
-          console.log(i);
+        }
+        if (playerCount > computerCount) {
+          console.log("You win!");
+        } else if (playerCount == computerCount) {
+          console.log("You tie!");
+        } else {
+          console.log("You lose!");
         }
       }
 
