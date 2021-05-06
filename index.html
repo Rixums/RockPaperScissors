@@ -6,6 +6,10 @@
   </head>
   <body>
     <script>
+      let playerCount = 0;
+      let computerCount = 0;
+      let tieCount = 0;
+
       function computerPlay() {
         let rpsArray = ["Rock", "Paper", "Scissors"];
         let rpsMath = Math.floor(Math.random() * rpsArray.length);
@@ -16,26 +20,36 @@
       function playRound(playerSelection, computerSelection) {
         if (playerSelection == "rock") {
           if (computerSelection == "Rock") {
+            tieCount++;
             return "It's a tie! Rock = Rock.";
           } else if (computerSelection == "Paper") {
+            computerCount++;
             return "You lose! Paper beats Rock.";
           } else {
+            playerCount++;
             return "You win! Rock beats Scissors.";
           }
         } else if (playerSelection == "paper") {
           if (computerSelection == "Rock") {
+            playerCount++;
             return "You win! Paper beats Rock.";
           } else if (computerSelection == "Paper") {
+            tieCount++;
             return "It's a tie! Paper = Paper.";
           } else {
+            computerCount++;
             return "You lose! Scissors beats Paper.";
           }
         } else if (playerSelection == "scissors") {
           if (computerSelection == "Rock") {
+            computerCount++;
             return "You lose! Rock beats Scissors.";
           } else if (computerSelection == "Paper") {
+            playerCount++;
             return "You win! Scissors beats Paper.";
-          } else {
+          } else;
+          {
+            tieCount++;
             return "It's a tie! Scissors = Scissors.";
           }
         } else {
@@ -43,14 +57,34 @@
         }
       }
 
-      let playerSelection = prompt(
-        "Enter rock, paper, or scissors"
-      ).toLowerCase();
+      function game() {
+        for (i = 0; i <= 4; i++) {
+          let playerSelection = prompt(
+            "Enter rock, paper, or scissors"
+          ).toLowerCase();
 
-      const computerSelection = computerPlay();
-      console.log("You played " + playerSelection);
-      console.log("The program played " + computerSelection);
-      console.log(playRound(playerSelection, computerSelection));
+          const computerSelection = computerPlay();
+          console.log(
+            "You played " +
+              playerSelection +
+              ". The program played: " +
+              computerSelection
+          );
+
+          console.log(playRound(playerSelection, computerSelection));
+          console.log(
+            "Player: " +
+              playerCount +
+              " Computer: " +
+              computerCount +
+              " Ties: " +
+              tieCount
+          );
+          console.log(i);
+        }
+      }
+
+      game();
     </script>
   </body>
 </html>
